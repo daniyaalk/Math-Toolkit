@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+ <html>
+   <head>
+     <!--Import materialize.css-->
+     <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+     <!--Let browser know website is optimized for mobile-->
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+     <meta charset="UTF-8">
+   </head>
+
+   <body>
+     <!--Import jQuery before materialize.js-->
+     <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+     <script type="text/javascript" src="js/materialize.min.js"></script>
+     <script type="text/javascript" src="js/math.js"></script>
+
+    <script type="text/javascript" src="js/num.js"></script>
+
+     <nav>
+       <a href="#!" class="brand-logo">Mathematics Toolkit</a>
+
+    </nav>
+    <div class="container" style="padding-top: 10px;">
+
+      <div class="row">
+
+        <div class="input-field col s6">
+          <input id="radius" type="number" class="validate" required>
+          <label for="radius">Radius</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="theta" type="number" class="validate" value="360" required>
+          <label for="theta">&Theta;(For Segments, if any)</label>
+        </div>
+        <div class="input-field col s12" style="text-align: center;">
+          <a class="waves-effect waves-light btn-large" id="calc">Calculate Area</a>
+        </div>
+
+        <script>
+          $(function(){
+            $("#calc").click(function(){
+
+                var radius = parseFloat($("#radius").val());
+                var theta = parseFloat($("#theta").val());
+
+                $("#answer").empty();
+
+                if(theta > 360){
+                  $("#answer").append("&Theta; can not be greater than zero!");
+                }else if(theta == "360"){
+                  $("#answer").append("Area of Circle = &Pi; r<sup>2</sup><br>");
+                  $("#answer").append("= &Pi; * " + radius + "<sup>2</sup>");
+                  $("#answer").append("= " + (radius/7)*radius*22 + "");
+                }else{
+                  $("#answer").append("Area of Circle = &Pi; r<sup>2</sup><br>");
+                  $("#answer").append("= &Pi; * " + radius + "<sup>2</sup>");
+                  $("#answer").append("= " + (radius/7)*radius*22 + "<br>");
+                  $("#answer").append("Area of sector = &Theta;/360 * &Pi; * r<sup>2<sup><br/>");
+                  $("#answer").append("= " + theta + "/360 * &Pi; * " + radius + "<sup>2</sup><br />");
+                  $("#answer").append("= " + theta/360 + " * &Pi; * " + radius*radius + "<br />");
+                  $("#answer").append("= " + (theta/360)*(radius/7)*radius*22 + " ");
+                }
+
+            });
+          });
+        </script>
+
+        <p id="answer">
+
+        </p>
+
+      </div>
+    </div>
+
+   </body>
+ </html>

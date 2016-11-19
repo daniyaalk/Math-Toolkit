@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+ <html>
+   <head>
+     <!--Import materialize.css-->
+     <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+     <!--Let browser know website is optimized for mobile-->
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+     <meta charset="UTF-8">
+   </head>
+
+   <body>
+     <!--Import jQuery before materialize.js-->
+     <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+     <script type="text/javascript" src="js/materialize.min.js"></script>
+
+    <script type="text/javascript" src="js/num.js"></script>
+
+     <nav>
+       <a href="#!" class="brand-logo">Mathematics Toolkit</a>
+
+    </nav>
+    <div class="container" style="padding-top: 10px;">
+      Enter Quadratic Equation In the form: ax² + bx + c = 0
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s4">
+              <input id="a" type="number" class="validate" required>
+              <label for="a">Coefficient of x²</label>
+            </div>
+            <div class="input-field col s4">
+              <input id="b" type="number" class="validate">
+              <label for="b">Coefficient of x</label>
+            </div>
+            <div class="input-field col s4">
+              <input id="c" type="number" class="validate">
+              <label for="c">Value of C</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12" style="text-align: center;">
+              <a class="waves-effect waves-light btn-large" id="submit">Solve</a>
+            </div>
+          </div>
+        </form>
+
+        <script>
+          $(function(){
+            $("#submit").click(function(){
+
+              var a = parseFloat($("#a").val());
+              var b = parseFloat($("#b").val());
+              var c = parseFloat($("#c").val());
+
+              if(!a || !b || !c){
+                alert("Please Fill in all the fields!");
+              }
+
+              $("#answer").empty();
+              $("#answer").append("<h5>Solution:</h5>");
+
+              var D = (b*b) - (4*a*c);
+
+              if(D >= 0){
+
+                var z1 = (-b + Math.sqrt(D))/(2*a);
+                var z2 = (-b - Math.sqrt(D))/(2*a);
+
+                $("#answer").append("x = (-b &plusmn; &radic;<span style='text-decoration: overline'>D</span> ) / 2 * a &nbsp; ..(Equation 1)<br />");
+                $("#answer").append("D = b<sup>2</sup> - 4 * a * c <br />");
+                $("#answer").append(" = (" + b + "<sup>2</sup>) - (4 * " + a + " * " + c + ") <br />");
+                $("#answer").append(" = "+ b*b +" - ("+ (4 * a * c) +") <br />");
+                $("#answer").append(" = "+ (b * b - 4 * a * c) +" &nbsp; ..(Equation 2) <br />");
+                $("#answer").append("&radic;<span style='text-decoration: overline;'>D</span> = "+ Math.sqrt(b * b - 4 * a * c) + "<br />");
+                $("#answer").append("Substituting (2) in (1) <br />");
+                $("#answer").append("x = {-"+ b +" &plusmn; &radic; <span style='text-decoration: overline'>"+ (b * b - 4 * a * c) +"</span>} / 2 * "+ a +"<br />");
+                $("#answer").append("x = "+ z1 +", "+ z2 +"<br />")
+
+                $("#answer").append("The Zeroes are: " + z1 + " and " + z2);
+
+              }else{
+
+                $("#answer").append("This Quadratic Equataion has no real roots");
+
+              }
+            });
+          });
+        </script>
+
+        <p id="answer">
+
+        </p>
+      </div>
+    </div>
+
+   </body>
+ </html>

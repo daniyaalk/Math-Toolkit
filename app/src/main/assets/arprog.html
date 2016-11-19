@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+ <html>
+   <head>
+     <!--Import materialize.css-->
+     <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+     <!--Let browser know website is optimized for mobile-->
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+     <meta charset="UTF-8">
+   </head>
+
+   <body>
+     <!--Import jQuery before materialize.js-->
+     <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+     <script type="text/javascript" src="js/materialize.min.js"></script>
+     <script type="text/javascript" src="js/math.js"></script>
+
+    <script type="text/javascript" src="js/num.js"></script>
+
+     <nav>
+       <a href="#!" class="brand-logo">Mathematics Toolkit</a>
+
+    </nav>
+    <div class="container" style="padding-top: 10px;">
+      a<sub>n</sub> = a + (n - 1)d
+      <div class="row">
+
+        <div class="input-field col s4">
+          <input id="a" type="number" class="validate" required>
+          <label for="a">a</label>
+        </div>
+        <div class="input-field col s4">
+          <input id="n" type="number" class="validate" required>
+          <label for="n">n</label>
+        </div>
+        <div class="input-field col s4">
+          <input id="d" type="number" class="validate" required>
+          <label for="d">d</label>
+        </div>
+        <div class="input-field col s12" style="text-align: center;">
+          <a class="waves-effect waves-light btn-large" id="submit">Solve</a>
+        </div>
+
+        <script>
+          $(function(){
+            $("#submit").click(function(){
+
+                var a = parseFloat($("#a").val());
+                var n = parseFloat($("#n").val());
+                var d = parseFloat($("#d").val());
+
+                $("#answer").empty();
+                $("#answer").append("a<sub>n</sub> = a + {(n-1)*d} <br />");
+                $("#answer").append(" = " + a + "+ {(" + n + "-1)*"+ d +"} <br />");
+                $("#answer").append(" = " + a + "+ ("+ (n-1) +" * "+ d +") <br />");
+                $("#answer").append(" = " + (a + ((n-1)*d)) + "<br />");
+                $("#answer").append("S<sub>n</sub> = (n/2) * (a + a<sub>n</sub>)<br />");
+                $("#answer").append(" = ("+ n +"/2) * ("+ a +" + "+ (a + ((n-1)*d)) +") <br />");
+                $("#answer").append(" = (" + (n/2) + ") * " + "(" + (a + ((n-1)*d)) + ") <br />");
+                $("#answer").append(" = " + ((2*a) + (n-1)*d));
+
+            });
+          });
+        </script>
+
+        <p id="answer">
+
+        </p>
+
+      </div>
+    </div>
+
+   </body>
+ </html>

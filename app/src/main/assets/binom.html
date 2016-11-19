@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+ <html>
+   <head>
+     <!--Import materialize.css-->
+     <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+     <!--Let browser know website is optimized for mobile-->
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+     <meta charset="UTF-8">
+   </head>
+
+   <body>
+     <!--Import jQuery before materialize.js-->
+     <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+     <script type="text/javascript" src="js/materialize.min.js"></script>
+     <script type="text/javascript" src="js/math.js"></script>
+
+    <script type="text/javascript" src="js/num.js"></script>
+
+     <nav>
+       <a href="#!" class="brand-logo">Mathematics Toolkit</a>
+
+    </nav>
+    <div class="container" style="padding-top: 10px;">
+
+      (a + b)<sup>n</sup> = <sup>n</sup>&Sigma;<sub>k = 0</sub> {<sup>n</sup>C<sub>k</sub> * a<sup>n-k</sup> * b<sup>k</sup>}
+      <div class="row">
+
+        <div class="input-field col s4">
+          <input id="a" type="number" class="validate" required>
+          <label for="a">a</label>
+        </div>
+        <div class="input-field col s4">
+          <input id="b" type="number" class="validate" required>
+          <label for="b">b</label>
+        </div>
+        <div class="input-field col s4">
+          <input id="n" type="number" class="validate" required>
+          <label for="n">n</label>
+        </div>
+        <div class="input-field col s12" style="text-align: center;">
+          <a class="waves-effect waves-light btn-large" id="submit">Solve</a>
+        </div>
+
+        <script>
+          $(function(){
+            $("#submit").click(function(){
+
+                var a = parseFloat($("#a").val());
+                var b = parseFloat($("#b").val());
+                var n = parseFloat($("#n").val());
+
+                $("#answer").empty();
+
+                function calc(a, b, n){
+                  answer = 0;
+
+                  $("#answer").append("("+ a +" + "+ b +")<sup>"+ n +"</sup><br />");
+                  $("#answer").append("= ");
+                  for(i = 0; i<=n; i++){
+                    $("#answer").append("(<sup>" + n + "</sup>C<sub>" + i + "</sub> * " + a + "<sup>" + (n-i) +"</sup> * " + b + "<sup>" + i + "</sup>)");
+                    if(i != n){
+                      $("#answer").append("+");
+                    }
+                    if(i == n){
+                      $("#answer").append("<br />");
+                    }
+                  }
+                  $("#answer").append("= ");
+                  for(i = 0; i<=n; i++){
+                    $("#answer").append(factorial(n)/(factorial(i)*factorial(n-i)) * Math.pow(a, n-i) * Math.pow(b, i));
+                    if(i != n){
+                      $("#answer").append("+");
+                    }
+                    if(i == n){
+                      $("#answer").append("<br />");
+                    }
+                  }
+                  $("#answer").append("<br />");
+                  for(i = 0; i<=n; i++){
+                    answer += factorial(n)/(factorial(i)*factorial(n-i)) * Math.pow(a, n-i) * Math.pow(b, i);
+                  }
+                  $("#answer").append("= ");
+                  return answer;
+                }
+
+                $("#answer").append(calc(a, b, n));
+
+            });
+          });
+        </script>
+
+        <p id="answer">
+
+        </p>
+
+      </div>
+    </div>
+
+   </body>
+ </html>

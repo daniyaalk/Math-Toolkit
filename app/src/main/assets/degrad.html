@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+ <html>
+   <head>
+     <!--Import materialize.css-->
+     <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+     <!--Let browser know website is optimized for mobile-->
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+     <meta charset="UTF-8">
+   </head>
+
+   <body>
+     <!--Import jQuery before materialize.js-->
+     <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+     <script type="text/javascript" src="js/materialize.min.js"></script>
+     <script type="text/javascript" src="js/math.js"></script>
+
+    <script type="text/javascript" src="js/num.js"></script>
+
+     <nav>
+       <a href="#!" class="brand-logo">Mathematics Toolkit</a>
+
+    </nav>
+    <div class="container" style="padding-top: 10px;">
+
+      <div class="row">
+
+        <div class="input-field col s12">
+          <input id="n" type="number" class="validate" required>
+          <label for="n">&Theta;</label>
+        </div>
+        <div class="input-field col s12" style="text-align: center;">
+          <a class="waves-effect waves-light btn-large" id="toRad">Convert Degree to Radians</a>&nbsp;<a class="waves-effect waves-light btn-large" id="toDeg">Convert Radian to Degrees</a>
+        </div>
+
+        <script>
+          $(function(){
+            $("#toRad").click(function(){
+
+                var n = parseFloat($("#n").val());
+
+                $("#answer").empty();
+
+                $("#answer").append("<p>" + n + " Degrees in Radians = " + n * (Math.PI/180));
+
+            });
+            $("#toDeg").click(function(){
+
+                var n = parseFloat($("#n").val());
+
+                $("#answer").empty();
+
+                $("#answer").append("<p>" + n + " Radians in Degrees = " + n * (180/Math.PI));
+
+            });
+          });
+        </script>
+
+        <p id="answer">
+
+        </p>
+
+      </div>
+    </div>
+
+   </body>
+ </html>
