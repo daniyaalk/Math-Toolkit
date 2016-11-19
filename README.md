@@ -4,5 +4,5 @@ An Android Web App that I created, just for helping some friends and to get a gr
 Frameworks
 -----------
 
-JQuery
+JQuery <br />
 Dogfalo / materialize 
